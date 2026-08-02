@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-bg: #0a0c0f;
+  --color-surface: #11151a;
+  --color-surface-2: #171c22;
+  --color-border: #252c35;
+  --color-ink: #f0ebe3;
+  --color-ink-dim: #8a929e;
+  --color-gold: #c9943a;
+  --color-teal: #2a9e92;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+/* Atmosphere: warm wash + cool counter + faint grid */
+.bg-atmosphere {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(201, 148, 58, 0.09), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 5%, rgba(42, 158, 146, 0.07), transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(201, 148, 58, 0.04), transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
+  background-attachment: fixed;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-fade-in {
+  animation: fade-in 0.6s ease both;
+}
+
+.anim-delay-1 {
+  animation-delay: 0.12s;
+}
+.anim-delay-2 {
+  animation-delay: 0.24s;
+}
+.anim-delay-3 {
+  animation-delay: 0.36s;
+}
+.anim-delay-4 {
+  animation-delay: 0.5s;
+}
+
+.boot-line {
+  animation: fade-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.project-row {
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.project-row:hover {
+  border-color: color-mix(in srgb, var(--color-ink-dim) 55%, transparent);
+  background-color: color-mix(in srgb, var(--color-surface) 80%, #1a2028);
+  transform: translateX(3px);
+}
