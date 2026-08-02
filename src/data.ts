@@ -41,13 +41,3 @@ export const projects: Project[] = [
     link: "https://familyofgreatness.com",
   },
 ];
-
-export const bootLines = [
-  "> initializing profile — Fabilous Lashidi",
-  "> loading role: CS student, NUST Bulawayo — year 2",
-  "> mounting services: research, product, insurtech, trading",
-  "> ctflex.service — AIE 2026 winning product — live — OK",
-  "> zsl-recognition.service — real-time CPU target <300ms — OK",
-  "> fog.platform — 100+ media assets migrated — OK",
-  "> status: build in public, daily",
-];

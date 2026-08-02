@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "mt-1.5 w-full border-b border-[var(--color-border)] bg-transparent px-0 py-2.5 font-mono text-sm text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-ink-dim)]/45 focus:border-[var(--color-gold)]";
+  "mt-1.5 w-full border-b border-[var(--color-border)] bg-transparent px-0 py-2.5 font-[var(--font-body)] text-sm text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-ink-dim)]/50 focus:border-[var(--color-ink)]";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -37,7 +37,7 @@ export default function ContactForm() {
       <input type="hidden" name="_template" value="table" />
       <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
-      <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+      <div className="grid gap-5 sm:grid-cols-2 sm:gap-8">
         <label className="block">
           <span className="font-mono text-[10px] tracking-[0.16em] text-[var(--color-ink-dim)] uppercase">
             Name
@@ -78,11 +78,11 @@ export default function ContactForm() {
         />
       </label>
 
-      <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group inline-flex items-center gap-2 bg-[var(--color-gold)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-bg)] transition hover:opacity-90 disabled:opacity-50"
+          className="group inline-flex items-center gap-2 bg-[var(--color-ink)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-surface)] transition hover:bg-[var(--color-gold)] disabled:opacity-50"
         >
           {status === "sending" ? "sending…" : "send message"}
           <span
@@ -101,7 +101,7 @@ export default function ContactForm() {
           </p>
         )}
         {status === "error" && (
-          <p className="w-full font-mono text-[11px] text-[#c45c5c]">
+          <p className="w-full font-mono text-[11px] text-[#a33c3c]">
             something broke — try again in a moment.
           </p>
         )}

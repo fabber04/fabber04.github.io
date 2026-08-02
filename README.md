@@ -2,8 +2,8 @@
 
 Live: **https://fabber04.github.io/**
 
-Vite + React + TypeScript + Tailwind v4. Dark systems aesthetic with
-Fraunces, IBM Plex, and a status.log boot sequence.
+Light studio redesign — Fraunces display, IBM Plex body, warm gold accent.
+Oversized brand hero with portrait plane; work-first layout.
 
 ## Run locally
 
@@ -14,15 +14,12 @@ npm run dev
 
 ## Edit content
 
-- `src/data.ts` — projects and hero boot-log lines
-- `src/App.tsx` — sections, copy, social links
-- `src/ContactForm.tsx` — contact form (FormSubmit → your email)
-- `src/index.css` — color tokens under `@theme`
+- `src/data.ts` — projects
+- `src/App.tsx` — sections, copy, socials
+- `src/ContactForm.tsx` — FormSubmit email form
+- `src/index.css` — studio color tokens
 
-## Deploy (GitHub Pages)
+## Deploy
 
-Pushes to `main` deploy via `.github/workflows/deploy-pages.yml` to the
-user site repo `fabber04.github.io`.
-
-After the first form submission, confirm FormSubmit’s email so contact
-messages actually arrive.
+Pushes to `main` deploy via GitHub Actions to `fabber04.github.io`.
+Confirm FormSubmit’s email after the first contact submission.

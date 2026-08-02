@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import BootLog from "./BootLog";
 import ContactForm from "./ContactForm";
 import { projects, type Status } from "./data";
 
 const statusColor: Record<Status, string> = {
-  LIVE: "text-[var(--color-teal)] border-[var(--color-teal)]/35 bg-[var(--color-teal)]/8",
-  WINNER: "text-[var(--color-gold)] border-[var(--color-gold)]/35 bg-[var(--color-gold)]/8",
-  SUBMITTED: "text-[var(--color-gold)] border-[var(--color-gold)]/35 bg-[var(--color-gold)]/8",
-  "IN PROGRESS": "text-[var(--color-ink-dim)] border-[var(--color-border)] bg-white/[0.03]",
-  RESEARCH: "text-[var(--color-ink-dim)] border-[var(--color-border)] bg-white/[0.03]",
+  LIVE: "text-[var(--color-teal)] border-[var(--color-teal)]/40 bg-[var(--color-teal)]/8",
+  WINNER: "text-[var(--color-gold)] border-[var(--color-gold)]/45 bg-[var(--color-gold)]/10",
+  SUBMITTED: "text-[var(--color-gold)] border-[var(--color-gold)]/35 bg-[var(--color-gold)]/6",
+  "IN PROGRESS": "text-[var(--color-ink-dim)] border-[var(--color-border)] bg-[var(--color-surface)]/60",
+  RESEARCH: "text-[var(--color-ink-dim)] border-[var(--color-border)] bg-[var(--color-surface)]/60",
 };
 
 const skillGroups = [
@@ -39,19 +38,16 @@ const rest = projects.filter((p) => p.id !== featured.id);
 const socials = [
   {
     label: "github",
-    detail: "@fabber04",
     href: "https://github.com/fabber04",
     avatar: "/avatars/github.png",
   },
   {
     label: "linkedin",
-    detail: "Fabilous Lashidi",
     href: "https://www.linkedin.com/in/fabilous-lashidi-571ab0259/",
     avatar: "/avatars/linkedin.png",
   },
   {
     label: "tiktok",
-    detail: "build log",
     href: "https://www.tiktok.com/@fabulous.lashid",
     avatar: "/avatars/tiktok.jpg",
   },
@@ -85,12 +81,10 @@ function useReveal<T extends HTMLElement>() {
 
 function Section({
   id,
-  eyebrow,
   title,
   children,
 }: {
   id: string;
-  eyebrow: string;
   title: string;
   children: React.ReactNode;
 }) {
@@ -100,16 +94,13 @@ function Section({
       id={id}
       ref={ref}
       className={`mx-auto max-w-5xl px-6 py-20 transition-all duration-700 ease-out md:py-28 ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+        visible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
       }`}
     >
-      <p className="font-mono text-[11px] tracking-[0.2em] text-[var(--color-teal)]">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-[var(--font-display)] text-3xl font-medium tracking-tight md:text-4xl">
+      <h2 className="font-[var(--font-display)] text-3xl font-medium tracking-tight md:text-4xl">
         {title}
       </h2>
-      <div className="mt-12">{children}</div>
+      <div className="mt-10 md:mt-12">{children}</div>
     </section>
   );
 }
@@ -127,15 +118,15 @@ function StatusBadge({ status }: { status: Status }) {
 function App() {
   return (
     <div className="bg-atmosphere min-h-screen">
-      <header className="sticky top-0 z-20 border-b border-[var(--color-border)]/80 bg-[var(--color-bg)]/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-20 border-b border-[var(--color-border)]/70 bg-[var(--color-bg)]/85 backdrop-blur-md">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3.5">
           <a
             href="#"
             className="font-[var(--font-display)] text-lg tracking-tight"
           >
-            Fab<span className="text-[var(--color-gold)]">.</span>Lashidi
+            Fab<span className="text-[var(--color-gold)]">.</span>
           </a>
-          <nav className="flex items-center gap-5 font-mono text-[11px] tracking-wide text-[var(--color-ink-dim)] sm:gap-8">
+          <nav className="flex items-center gap-6 font-mono text-[11px] tracking-wide text-[var(--color-ink-dim)] sm:gap-8">
             <a href="#work" className="transition hover:text-[var(--color-ink)]">
               work
             </a>
@@ -149,77 +140,59 @@ function App() {
               contact
             </a>
           </nav>
-          <a
-            href="#contact"
-            className="border border-[var(--color-gold)]/45 px-3 py-1.5 font-mono text-[11px] text-[var(--color-gold)] transition hover:bg-[var(--color-gold)]/10"
-          >
-            get in touch
-          </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative mx-auto grid max-w-5xl items-center gap-12 px-6 pb-14 pt-14 md:grid-cols-[1.15fr_0.85fr] md:gap-16 md:pb-24 md:pt-24">
-        <div>
-          <div className="anim-fade-up flex items-center gap-4">
-            <img
-              src="/avatars/linkedin.png"
-              alt="Fabilous Lashidi"
-              width={96}
-              height={96}
-              className="h-20 w-20 object-cover object-top ring-1 ring-[var(--color-border)] md:h-24 md:w-24"
-            />
-            <div>
-              <p className="font-[var(--font-display)] text-2xl tracking-tight text-[var(--color-ink)] md:text-3xl">
-                Fab<span className="text-[var(--color-gold)]">.</span>Lashidi
-              </p>
-              <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-[var(--color-ink-dim)]">
-                CS · NUST BULAWAYO · YEAR 2
-              </p>
-            </div>
-          </div>
-          <h1 className="anim-fade-up anim-delay-2 mt-7 font-[var(--font-display)] text-[2.2rem] font-medium leading-[1.12] tracking-tight md:mt-8 md:text-5xl">
-            Systems that carry real weight —{" "}
-            <em className="italic text-[var(--color-gold)]">insurance</em>,{" "}
-            <em className="italic text-[var(--color-gold)]">accessibility</em>,{" "}
-            <em className="italic text-[var(--color-gold)]">community</em>.
+      {/* Hero — brand + line + CTAs + dominant portrait */}
+      <section className="relative mx-auto grid min-h-[calc(100svh-3.25rem)] max-w-6xl lg:grid-cols-[1fr_1.05fr]">
+        <div className="flex flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:py-20">
+          <h1 className="anim-fade-up font-[var(--font-display)] text-[clamp(3.5rem,12vw,7.5rem)] font-medium leading-[0.9] tracking-tight">
+            Fab<span className="text-[var(--color-gold)]">.</span>
           </h1>
-          <p className="anim-fade-up anim-delay-3 mt-5 max-w-md text-[15px] leading-relaxed text-[var(--color-ink-dim)] md:mt-6">
+          <p className="anim-fade-up anim-delay-2 mt-6 max-w-md text-[15px] leading-relaxed text-[var(--color-ink-dim)] md:mt-8 md:text-base">
             Conceptualizing and building computing solutions that matter —
             from research systems to products people can actually use,
             documented in public as I go.
           </p>
-          <div className="anim-fade-up anim-delay-4 mt-8 flex flex-wrap gap-3 md:mt-9">
+          <div className="anim-fade-up anim-delay-3 mt-8 flex flex-wrap gap-3 md:mt-10">
             <a
               href="#work"
-              className="bg-[var(--color-gold)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-bg)] transition hover:opacity-90"
+              className="bg-[var(--color-ink)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-surface)] transition hover:bg-[var(--color-gold)]"
             >
               view work
             </a>
             <a
               href="#contact"
-              className="border border-[var(--color-border)] px-5 py-2.5 font-mono text-[11px] tracking-wide text-[var(--color-ink)] transition hover:border-[var(--color-ink-dim)]"
+              className="border border-[var(--color-ink)]/25 px-5 py-2.5 font-mono text-[11px] tracking-wide text-[var(--color-ink)] transition hover:border-[var(--color-ink)]"
             >
               contact
             </a>
           </div>
+          <p className="anim-fade-up anim-delay-4 mt-10 font-mono text-[10px] tracking-[0.16em] text-[var(--color-ink-dim)] uppercase">
+            Fabilous Lashidi · CS · NUST Bulawayo
+          </p>
         </div>
-        <div className="anim-fade-in anim-delay-2">
-          <BootLog />
+
+        <div className="anim-portrait relative min-h-[55vw] overflow-hidden lg:min-h-full">
+          <img
+            src="/avatars/linkedin.png"
+            alt="Fabilous Lashidi"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_18%]"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-bg)]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[var(--color-bg)]/40 lg:via-transparent lg:to-transparent"
+          />
         </div>
       </section>
 
       {/* Work */}
-      <Section id="work" eyebrow="SERVICES RUNNING" title="Selected work">
+      <Section id="work" title="Selected work">
         <a
           href={featured.link}
           target={featured.link?.startsWith("http") ? "_blank" : undefined}
           rel={featured.link?.startsWith("http") ? "noreferrer" : undefined}
-          className={`project-row group block border border-[var(--color-border)] border-l-[3px] bg-[var(--color-surface)]/60 px-6 py-7 md:px-8 ${
-            featured.status === "WINNER"
-              ? "border-l-[var(--color-gold)]"
-              : "border-l-[var(--color-teal)]"
-          }`}
+          className="project-row group block border-b border-[var(--color-border)] pb-10 pt-2"
         >
           <div className="flex flex-wrap items-center gap-3">
             <StatusBadge status={featured.status} />
@@ -227,15 +200,15 @@ function App() {
               FEATURED
             </span>
           </div>
-          <h3 className="mt-4 font-[var(--font-display)] text-2xl tracking-tight md:text-3xl">
+          <h3 className="mt-5 font-[var(--font-display)] text-3xl tracking-tight md:text-5xl">
             {featured.name}
           </h3>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--color-ink-dim)]">
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--color-ink-dim)] md:text-base">
             {featured.summary}
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
             {featured.metric && (
-              <p className="font-mono text-xs text-[var(--color-teal)]">
+              <p className="font-mono text-xs text-[var(--color-gold)]">
                 {featured.metric.label}:{" "}
                 <span className="text-[var(--color-ink)]">
                   {featured.metric.value}
@@ -246,28 +219,28 @@ function App() {
               {featured.stack.join(" · ")}
             </p>
             {featured.link?.startsWith("http") && (
-              <span className="font-mono text-[11px] text-[var(--color-gold)] transition group-hover:underline">
+              <span className="font-mono text-[11px] text-[var(--color-ink)] transition group-hover:text-[var(--color-gold)]">
                 view site →
               </span>
             )}
           </div>
         </a>
 
-        <ul className="mt-3 divide-y divide-[var(--color-border)] border border-[var(--color-border)] border-t-0">
+        <ul className="divide-y divide-[var(--color-border)]">
           {rest.map((p) => {
             const external = p.link?.startsWith("http");
             const rowClass =
-              "project-row group flex flex-col gap-3 px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8 md:px-6";
+              "project-row group flex flex-col gap-3 py-7 sm:flex-row sm:items-start sm:justify-between sm:gap-10";
             const body = (
               <>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="font-[var(--font-display)] text-lg tracking-tight">
+                    <h3 className="font-[var(--font-display)] text-xl tracking-tight md:text-2xl">
                       {p.name}
                     </h3>
                     <StatusBadge status={p.status} />
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-dim)]">
+                  <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-[var(--color-ink-dim)]">
                     {p.summary}
                   </p>
                   {p.metric && (
@@ -279,7 +252,7 @@ function App() {
                     </p>
                   )}
                   {external && (
-                    <span className="mt-3 inline-block font-mono text-[11px] text-[var(--color-gold)] transition group-hover:underline">
+                    <span className="mt-3 inline-block font-mono text-[11px] text-[var(--color-ink)] transition group-hover:text-[var(--color-gold)]">
                       view site →
                     </span>
                   )}
@@ -310,36 +283,34 @@ function App() {
       </Section>
 
       {/* Skills */}
-      <Section id="skills" eyebrow="STACK" title="Tools I reach for">
-        <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
+      <Section id="skills" title="Tools I reach for">
+        <ul className="max-w-2xl space-y-6">
           {skillGroups.map((g) => (
-            <div
+            <li
               key={g.label}
-              className="border-t border-[var(--color-border)] pt-5"
+              className="flex flex-col gap-1 border-t border-[var(--color-border)] pt-5 sm:flex-row sm:gap-8"
             >
-              <p className="font-mono text-[11px] tracking-[0.14em] text-[var(--color-ink-dim)]">
+              <p className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-[var(--color-ink-dim)] sm:w-40">
                 {g.label}
               </p>
-              <p className="mt-2.5 text-[15px] leading-relaxed">
-                {g.items.join(" · ")}
-              </p>
-            </div>
+              <p className="text-[15px] leading-relaxed">{g.items.join(" · ")}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
       {/* Contact */}
-      <Section id="contact" eyebrow="OPEN CHANNEL" title="Let's talk">
+      <Section id="contact" title="Let's talk">
         <p className="max-w-md text-[15px] leading-relaxed text-[var(--color-ink-dim)]">
           Open to research collabs, hackathon teams, and internships.
           Drop a note — I&apos;ll get back to you.
         </p>
 
-        <div className="mt-10 max-w-xl border border-[var(--color-border)]/80 bg-[var(--color-surface)]/40 px-5 py-6 md:px-7 md:py-8">
+        <div className="mt-10 max-w-xl border-t border-[var(--color-border)] pt-8">
           <ContactForm />
         </div>
 
-        <div className="mt-12">
+        <div className="mt-14">
           <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--color-ink-dim)] uppercase">
             or find me
           </p>
@@ -350,7 +321,7 @@ function App() {
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-2.5 border border-[var(--color-border)] bg-[var(--color-bg)]/40 py-1.5 pr-3.5 pl-1.5 transition hover:border-[var(--color-gold)]/50 hover:bg-[var(--color-gold)]/[0.06]"
+                  className="group inline-flex items-center gap-2.5 border border-[var(--color-border)] bg-[var(--color-surface)]/70 py-1.5 pr-3.5 pl-1.5 transition hover:border-[var(--color-gold)]/60"
                 >
                   <img
                     src={s.avatar}
