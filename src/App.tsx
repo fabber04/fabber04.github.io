@@ -22,11 +22,11 @@ const skillGroups = [
   },
   {
     label: "Security",
-    items: ["VAPT", "Active Directory Attack Chains", "SMB Relay"],
+    items: ["Penetration Testing", "Active Directory Security", "Network Attack Paths"],
   },
   {
     label: "Domain",
-    items: ["Actuarial Modeling", "Trading Systems (MQL5)"],
+    items: ["Actuarial Modeling", "Market Systems Research"],
   },
 ];
 
@@ -185,8 +185,8 @@ function App() {
             <em className="italic text-[var(--color-gold)]">community</em>.
           </h1>
           <p className="anim-fade-up anim-delay-3 mt-5 max-w-md text-[15px] leading-relaxed text-[var(--color-ink-dim)] md:mt-6">
-            Undergraduate researcher and student developer building insurtech,
-            sign-language recognition, and civic platforms for Zimbabwe —
+            Conceptualizing and building computing solutions that matter —
+            from research systems to products people can actually use,
             documented in public as I go.
           </p>
           <div className="anim-fade-up anim-delay-4 mt-8 flex flex-wrap gap-3 md:mt-9">
