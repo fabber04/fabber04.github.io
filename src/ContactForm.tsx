@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "mt-1.5 w-full border-b border-[var(--color-border)] bg-transparent px-0 py-2.5 font-[var(--font-body)] text-sm text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-ink-dim)]/50 focus:border-[var(--color-ink)]";
+  "mt-1.5 w-full border-b border-[var(--color-ink)]/20 bg-transparent px-0 py-2.5 font-[var(--font-body)] text-sm text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-ink)]/35 focus:border-[var(--color-trust)]";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -32,14 +32,20 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="relative">
+    <form onSubmit={onSubmit}>
       <input type="hidden" name="_subject" value="Portfolio contact" />
       <input type="hidden" name="_template" value="table" />
-      <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+      <input
+        type="text"
+        name="_honey"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+      />
 
       <div className="grid gap-5 sm:grid-cols-2 sm:gap-8">
         <label className="block">
-          <span className="font-mono text-[10px] tracking-[0.16em] text-[var(--color-ink-dim)] uppercase">
+          <span className="font-mono text-[10px] tracking-[0.14em] text-[var(--color-ink)]/50 uppercase">
             Name
           </span>
           <input
@@ -51,7 +57,7 @@ export default function ContactForm() {
           />
         </label>
         <label className="block">
-          <span className="font-mono text-[10px] tracking-[0.16em] text-[var(--color-ink-dim)] uppercase">
+          <span className="font-mono text-[10px] tracking-[0.14em] text-[var(--color-ink)]/50 uppercase">
             Email
           </span>
           <input
@@ -66,7 +72,7 @@ export default function ContactForm() {
       </div>
 
       <label className="mt-5 block">
-        <span className="font-mono text-[10px] tracking-[0.16em] text-[var(--color-ink-dim)] uppercase">
+        <span className="font-mono text-[10px] tracking-[0.14em] text-[var(--color-ink)]/50 uppercase">
           Message
         </span>
         <textarea
@@ -78,31 +84,22 @@ export default function ContactForm() {
         />
       </label>
 
-      <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group inline-flex items-center gap-2 bg-[var(--color-ink)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-surface)] transition hover:bg-[var(--color-gold)] disabled:opacity-50"
+          className="bg-[var(--color-ink)] px-5 py-2.5 font-mono text-[11px] font-medium tracking-wide text-[var(--color-panel)] transition hover:bg-[var(--color-trust)] disabled:opacity-50"
         >
           {status === "sending" ? "sending…" : "send message"}
-          <span
-            aria-hidden
-            className="transition-transform group-hover:translate-x-0.5"
-          >
-            →
-          </span>
         </button>
-        <p className="font-mono text-[10px] tracking-wide text-[var(--color-ink-dim)]">
-          goes to my inbox
-        </p>
         {status === "sent" && (
-          <p className="w-full font-mono text-[11px] text-[var(--color-teal)]">
+          <p className="font-mono text-[11px] text-[var(--color-live)]">
             sent — I&apos;ll get back to you.
           </p>
         )}
         {status === "error" && (
-          <p className="w-full font-mono text-[11px] text-[#a33c3c]">
-            something broke — try again in a moment.
+          <p className="font-mono text-[11px] text-[#a33c3c]">
+            failed — try again in a moment.
           </p>
         )}
       </div>

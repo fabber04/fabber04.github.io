@@ -2,24 +2,16 @@
 
 Live: **https://fabber04.github.io/**
 
-Light studio redesign — Fraunces display, IBM Plex body, warm gold accent.
-Oversized brand hero with portrait plane; work-first layout.
+Cool-stone desk layout. FOG owns the first viewport. Coverage strip
+checks familyofgreatness.com and reports UP / DOWN / CORS honestly.
 
-## Run locally
+## Run
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Edit content
-
-- `src/data.ts` — projects
-- `src/App.tsx` — sections, copy, socials
-- `src/ContactForm.tsx` — FormSubmit email form
-- `src/index.css` — studio color tokens
-
 ## Deploy
 
-Pushes to `main` deploy via GitHub Actions to `fabber04.github.io`.
-Confirm FormSubmit’s email after the first contact submission.
+Push to `main` → GitHub Actions → Pages.
